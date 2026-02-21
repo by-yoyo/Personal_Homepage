@@ -1,0 +1,69 @@
+/* ============================================
+   右下角卡片 - GitHub仓库统计
+   ============================================ */
+
+/* 卡片容器 - 使用公共卡片样式 */
+.bottom-right-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeaea;
+}
+/* 仓库统计区域 */
+.repo-stats {
+  text-align: center;
+}
+
+/* 统计标题 */
+.stats-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+  color: #333;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* 仓库数量显示 */
+.repo-count {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* 数量数字 */
+.count-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #007bff;
+  line-height: 1;
+}
+
+/* 数量标签 */
+.count-label {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* 统计描述 */
+.stats-description {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ============================================
+   响应式设计
+   ============================================ */
+@media (max-width: 768px) {
+  .count-number {
+    font-size: 2rem;
+  }
+  
+  .stats-title {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,37 @@
+/* ============================================
+   右上角卡片 - 个人简介
+   ============================================ */
+
+/* 卡片容器 - 使用公共卡片样式 */
+.top-right-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeaea;
+}
+/* 个人简介标题 */
+.profile-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* 个人简介描述 */
+.profile-description {
+  margin: 0;
+  color: #666;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* 段落间距 */
+.profile-description p {
+  margin: 0 0 1rem 0;
+}
+
+.profile-description p:last-child {
+  margin-bottom: 0;
+}

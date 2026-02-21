@@ -1,0 +1,10 @@
+# GitHub API URLs 提取和注释
+
+## 2. https://api.github.com/users/{username}/repos?sort=pushed&per_page=100
+注释: 获取用户的公开仓库列表，按最后推送时间排序，最多返回100个仓库。用于统计仓库数量、语言分布和技术栈。
+
+## 3. https://api.github.com/users/{username}/events?page={page}&per_page=100
+注释: 获取用户的活动事件数据，包括推送、创建仓库、星标等操作，按时间倒序排列。用于生成活动统计图表和贡献热力图。
+
+## 4. https://api.github.com/repos/{username}/{repo['name']}/commits?author={username}&per_page=100
+注释: 获取指定仓库中用户自己的提交记录，最多返回100个提交。用于补充活动数据，当 Events API 数据不足时使用。

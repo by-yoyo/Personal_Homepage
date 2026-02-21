@@ -1,0 +1,60 @@
+/* ============================================
+   左下角卡片 - GitHub链接
+   ============================================ */
+
+/* 卡片容器 - 使用公共卡片样式 */
+.bottom-left-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeaea;
+}
+/* GitHub链接按钮 */
+.github-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.github-link-button:hover {
+  background: linear-gradient(135deg, #0056b3, #004494);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 91, 187, 0.3);
+}
+
+/* 链接箭头图标 */
+.link-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.github-link-button:hover .link-arrow {
+  transform: translateX(3px);
+}
+
+/* 按钮焦点状态 */
+.github-link-button:focus {
+  outline: 2px solid rgba(0, 123, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* 按钮激活状态 */
+.github-link-button:active {
+  transform: translateY(0);
+  transition: transform 0.1s ease;
+}

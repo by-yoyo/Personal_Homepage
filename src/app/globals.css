@@ -1,0 +1,229 @@
+/* ============================================
+   全局样式 - Personal Homepage
+   ============================================ */
+
+/* 重置和基础样式 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('https://img.aur.fan/file/yoyo/img/bg-d/1770887575567_d-1.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 主要内容区域 */
+.main-content {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.profile-container {
+  padding: 0;
+  width: 100%;
+}
+
+main {
+  padding: 2rem;
+  color: #333;
+}
+
+/* ============================================
+   导航栏样式
+   ============================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0.6rem 2rem 0.9rem 2rem;
+  background-color: rgba(248, 249, 250, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(3px);
+  transition: transform 0.4s ease-in-out;
+  border-radius: 0 0 12px 12px;
+}
+
+.navbar-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 导航栏隐藏/显示状态 */
+.navbar.hidden {
+  transform: translateX(-50%) translateY(-100%);
+}
+
+.navbar.visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.nav-links a:hover {
+  color: #007bff;
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* 导航栏内部切换按钮 */
+.nav-toggle-inside {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(248, 249, 250, 0.95);
+  color: #333;
+  text-align: center;
+  padding: 1px 30px 2px 30px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  white-space: nowrap;
+  clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%);
+  border-radius: 0 0 4px 4px;
+}
+
+.nav-toggle-inside:hover {
+  background-color: rgba(248, 249, 250, 0.98);
+}
+
+/* ============================================
+   公共卡片样式
+   ============================================ */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeaea;
+}
+
+/* ============================================
+   工具类
+   ============================================ */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-1 {
+  gap: 0.5rem;
+}
+
+.gap-1\.5 {
+  gap: 1.5rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ============================================
+   响应式设计
+   ============================================ */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.6rem 1rem;
+    left: 0;
+    transform: translateX(0);
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0 0 12px 12px;
+  }
+  
+  .navbar.hidden {
+    transform: translateY(-100%);
+  }
+  
+  .navbar.visible {
+    transform: translateY(0);
+  }
+  
+  .navbar-content {
+    max-width: 100%;
+  }
+  
+  .nav-links li {
+    margin-left: 1rem;
+  }
+  
+  .nav-toggle-inside {
+    padding: 1px 25px 2px 25px;
+    font-size: 11px;
+    bottom: -20px;
+    clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%);
+    background-color: rgba(248, 249, 250, 0.95);
+    color: #333;
+    backdrop-filter: blur(3px);
+  }
+  
+  .main-content {
+    padding: 1rem;
+    max-width: 100%;
+  }
+  
+  main {
+    padding: 1rem;
+  }
+}

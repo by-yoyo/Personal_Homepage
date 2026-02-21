@@ -1,0 +1,74 @@
+/* ============================================
+   左上角卡片 - 用户信息
+   ============================================ */
+
+/* 卡片容器 - 使用公共卡片样式 */
+.top-left-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeaea;
+}
+/* 用户信息区域 */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* 头像链接 */
+.avatar-link {
+  display: block;
+}
+
+/* 用户头像 */
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #007bff;
+}
+
+/* 用户详细信息 */
+.user-details {
+  flex: 1;
+}
+
+/* 用户名 */
+.user-name {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+/* 用户位置 */
+.user-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.location-icon {
+  font-size: 1rem;
+}
+
+/* ============================================
+   响应式设计
+   ============================================ */
+@media (max-width: 768px) {
+  .user-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .user-avatar {
+    width: 100px;
+    height: 100px;
+  }
+}

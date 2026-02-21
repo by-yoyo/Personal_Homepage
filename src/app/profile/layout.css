@@ -1,0 +1,51 @@
+/* ============================================
+   个人资料页面布局样式
+   ============================================ */
+
+/* 双栏布局 */
+.two-column-layout {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* 左栏 - 宽度40% */
+.left-column {
+  flex: 1;
+  min-width: 0; /* 防止内容溢出 */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 右栏 - 宽度60% */
+.right-column {
+  flex: 2;
+  min-width: 0; /* 防止内容溢出 */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 子页面内容区域 - 使用公共卡片样式 */
+.profile-content {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeaea;
+}
+/* ============================================
+   响应式设计
+   ============================================ */
+@media (max-width: 768px) {
+  .two-column-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .left-column,
+  .right-column {
+    flex: 1;
+  }
+}
