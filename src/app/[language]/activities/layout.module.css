@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+.load {
+    @apply text-lg;
+}

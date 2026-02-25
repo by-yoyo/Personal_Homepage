@@ -1,0 +1,136 @@
+@reference "tailwindcss";
+
+.navbarContainer {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	z-index: 50;
+	width: 100%;
+	transform: translateX(-50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.navToggleCheckbox {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.navbarGroup {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+	transform: translateY(0);
+}
+
+.navToggleCheckbox:checked ~ .navbarGroup {
+	transform: translateY(-71%);
+}
+
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.75rem 1.5rem;
+	width: 100%;
+	-webkit-backdrop-filter: blur(12px);
+	backdrop-filter: blur(12px);
+	background-color: var(--navbar-bg);
+	border-bottom: 1px solid var(--navbar-border);
+	border-radius: 0 0 16px 16px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+	color: var(--navbar-text);
+	transition: transform 0.25s ease-out;
+	transform: translateY(0);
+}
+
+.navbarTitle {
+	font-weight: 600;
+	font-size: 1.1rem;
+}
+
+.navbarRight {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.navLinks {
+	display: flex;
+	gap: 0.75rem;
+}
+
+.navLink {
+	padding: 0.25rem 0.5rem;
+	border-radius: 9999px;
+	text-decoration: none;
+	color: inherit;
+	transition:
+		background-color 0.2s ease,
+		transform 0.2s ease;
+}
+
+.navLink:hover {
+	background-color: var(--navbar-bg-hover);
+	transform: translateY(-1px);
+}
+
+/* 导航栏外部下方的梯形容器：始终紧贴导航栏底部 */
+.toggleButtonWrapper {
+	margin-top: 0;
+	align-self: center;
+}
+
+.toggleButton {
+	position: relative;
+	padding: 0.3rem 0.9rem;
+	border-radius: 0;
+	/* 和导航栏保持一致的视觉风格：同色背景 + 毛玻璃 */
+	border: 0;
+	border-top: 1px solid var(--navbar-border);
+	background-color: var(--navbar-bg);
+	-webkit-backdrop-filter: blur(12px);
+	backdrop-filter: blur(12px);
+	color: inherit;
+	cursor: pointer;
+	font-size: 0.85rem;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		transform 0.25s ease,
+		opacity 0.2s ease,
+		box-shadow 0.25s ease;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+	/* 正常的上宽下窄梯形 */
+	clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+	padding-inline: 1.6rem;
+	/* 高度改为之前的一半左右 */
+	padding-block: 0.2rem 0.35rem;
+	box-shadow: none;
+}
+
+.toggleButton::after {
+	content: attr(data-hide-label);
+}
+
+.navToggleCheckbox:checked ~ .navbarGroup .toggleButton::after {
+	content: attr(data-show-label);
+}
+
+.toggleButton:hover {
+	background-color: var(--navbar-bg-hover);
+	transform: translateY(-1px) scale(1.01);
+}
+
+@media (max-width: 640px) {
+	.navbar {
+		padding-inline: 1rem;
+	}
+}

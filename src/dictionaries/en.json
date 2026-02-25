@@ -1,0 +1,16 @@
+{
+	"navbar": {
+		"title": "Qiu Jin",
+		"links": {
+			"about": "About",
+			"activities": "Activities",
+			"profile": "Profile",
+			"projects": "Projects"
+		},
+		"toggle": {
+			"show": "Show navbar",
+			"hide": "Hide navbar"
+		}
+	},
+	"title": "Personal Homepage"
+}

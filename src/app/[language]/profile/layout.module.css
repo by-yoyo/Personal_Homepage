@@ -1,0 +1,10 @@
+@reference "tailwindcss";
+
+.load {
+    @apply text-lg;
+}
+
+.profileLayout {
+    @apply flex flex-col gap-4 w-full;
+    padding: 100px;
+}

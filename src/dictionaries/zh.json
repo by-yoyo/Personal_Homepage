@@ -1,0 +1,16 @@
+{
+	"navbar": {
+		"title": "秋瑾",
+		"links": {
+			"about": "关于",
+			"activities": "活动",
+			"profile": "简介",
+			"projects": "项目"
+		},
+		"toggle": {
+			"show": "显示导航",
+			"hide": "隐藏导航"
+		}
+	},
+	"title": "个人主页"
+}

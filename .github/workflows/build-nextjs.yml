@@ -1,0 +1,102 @@
+name: Build and Upload to Releases CI
+
+on:
+  workflow_dispatch:
+
+env:
+  VERSION_PREFIX: v0.1
+  PACKAGE_PREFIX: Personal_Homepage
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build Next.js app
+        run: npm run build
+
+      - name: Prepare output directory (fix missing hidden files)
+        run: |
+          mkdir -p output
+          # 复制 public 文件夹（如果存在）
+          [ -d "public" ] && cp -r public output/
+          # 复制 standalone 所有内容（包括隐藏文件如 .next）
+          cp -r .next/standalone/. output/
+          # 复制静态文件到正确位置
+          if [ -d ".next/static" ]; then
+            mkdir -p output/.next
+            cp -r .next/static output/.next/
+          fi
+
+      - name: Calculate version
+        id: version
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prefix = process.env.VERSION_PREFIX;
+            console.log(`版本前缀: ${prefix}`);
+
+            const { data: releases } = await github.rest.repos.listReleases({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              per_page: 100
+            });
+
+            const regex = new RegExp(`^${prefix}\\.(\\d+)$`);
+            let maxPatch = 0;
+            for (const release of releases) {
+              const match = release.tag_name.match(regex);
+              if (match) {
+                const patch = parseInt(match[1], 10);
+                if (patch > maxPatch) {
+                  maxPatch = patch;
+                }
+              }
+            }
+
+            const nextPatch = maxPatch + 1;
+            const newVersion = `${prefix}.${nextPatch}`;
+            console.log(`新版本: ${newVersion}`);
+            core.setOutput('new_version', newVersion);
+
+      - name: Package into multiple formats
+        run: |
+          VERSION="${{ steps.version.outputs.new_version }}"
+          PREFIX="${{ env.PACKAGE_PREFIX }}"
+
+          # .tar.gz
+          tar -czf "${PREFIX}-${VERSION}.tar.gz" -C output .
+
+          # .zip
+          (cd output && zip -q -r "../${PREFIX}-${VERSION}.zip" .)
+
+          # .7z
+          sudo apt-get update && sudo apt-get install -y p7zip-full
+          (cd output && 7z a -bd "../${PREFIX}-${VERSION}.7z" . > /dev/null)
+
+      - name: Create Release and upload assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.new_version }}
+          name: Release ${{ steps.version.outputs.new_version }}
+          files: |
+            ${{ env.PACKAGE_PREFIX }}-${{ steps.version.outputs.new_version }}.tar.gz
+            ${{ env.PACKAGE_PREFIX }}-${{ steps.version.outputs.new_version }}.zip
+            ${{ env.PACKAGE_PREFIX }}-${{ steps.version.outputs.new_version }}.7z
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

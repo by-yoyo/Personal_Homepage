@@ -1,0 +1,16 @@
+@theme inline {
+}
+
+:root {
+    --navbar-bg: rgba(255, 255, 255, 0.7);
+    --navbar-border: rgba(0, 0, 0, 0.1);
+    --navbar-bg-hover: rgba(255, 255, 255, 0.9);
+    --navbar-text: rgba(0, 0, 0, 0.9);
+}
+
+.dark {
+    --navbar-bg: rgba(0, 0, 0, 0.8);
+    --navbar-border: rgba(255, 255, 255, 0.1);
+    --navbar-bg-hover: rgba(0, 0, 0, 0.9);
+    --navbar-text: rgba(255, 255, 255, 0.9);
+}
