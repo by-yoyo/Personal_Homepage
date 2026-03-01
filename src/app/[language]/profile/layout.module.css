@@ -8,3 +8,9 @@
     @apply flex flex-col gap-4 w-full;
     padding: 100px;
 }
+
+.jsonBlock {
+    @apply text-sm;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
