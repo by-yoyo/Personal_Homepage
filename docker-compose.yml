@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  web:
+    image: Dockerfile
+    container_name: nextjs
+    restart: unless-stopped
+    ports:
+      - "80:3000"
+    # volumes:
+      # - ./html:/usr/share/nginx/html
+      # - ./nginx/conf.d:/etc/nginx/conf.d
+    # environment:
+      # - NGINX_HOST=localhost
+      # - NGINX_PORT=80
+    networks:
+      - bridge
+
+networks:
+  webnet:
+    driver: bridge
